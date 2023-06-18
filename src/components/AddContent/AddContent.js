@@ -38,6 +38,15 @@ export default function AddContent(){
 	const [previewasked,setpreviewasked] = useState(false);
 
 
+	function allfields(){
+		if(content.length >= 100 && title!== "" && coverimg!== ""  && selected.id !== 0){
+            return true;
+        }
+        else{
+            return false;
+        }
+	}
+
 	function Reset(){
 		setContent("");
 		setTitle("");
@@ -47,7 +56,7 @@ export default function AddContent(){
 	}
 
 	async function Preview(){
-        if(selected.id !== 0 && content.length >= 100 && title !== "" && coverimg !== "" ){
+        if(allfields()){
 			const tobeuploadedstate = {
 				title:title,
 				coverimg:coverimg,
@@ -57,17 +66,54 @@ export default function AddContent(){
 				shortsummary:shortsummary,
 			};
 			setpreviewasked(true)
+			const div = document.getElementById("content");
+			div.innerHTML = content;
 		}
 		else{
 			alert("Fill incomplete blocks")
 		}
 	}
 
+	function download(filename, text) {
+		var element = document.createElement('a');
+		element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text));
+		element.setAttribute('download', filename);
+	  
+		element.style.display = 'none';
+		document.body.appendChild(element);
+	  
+		element.click();
+	  
+		document.body.removeChild(element);
+	  }
+	  
+	//   download("hello.txt","This is the content of my file :)");
+	  
+
+	function Export(){
+		if(allfields()){
+			const dive = document.getElementById("content");
+            const tobeuploadedstate = {
+                title:title,
+                coverimg:coverimg,
+                category:selected.name,
+                contentHtml:content,
+                tags:tag,
+				content:dive.innerText,
+                shortsummary:shortsummary,
+            };
+			download("title.txt", JSON.stringify(tobeuploadedstate));
+			console.log("exported tobeuploadedstate");
+		}
+        else{
+            alert("Fill incomplete blocks")
+        }
+	}
+
 	function handleaddtagbutton(){
 		addtag([...tag,currtag]);
 		setcurrtagvalue("");
 	}
-
 
  	return (
          <>
@@ -94,10 +140,10 @@ export default function AddContent(){
 					<div className="w-30  text-xl font-bold mb-2  ">
 						<Dropdown   selected={selected} setSelected={setSelected} categories={categories}/>
 					</div>
-					<div className="w-7/12  font-bold mb-2">
+					<div className="w-7/12 font-bold mb-2 " >
 						<div className="text-xl font-bold mb-1">Cover image</div>
 						<input 
-							className="bg-white appearance-none border-2 border-gray-200 rounded-md w-full py-2 px-2 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:shadow-outline" 
+							className="bg-white appearance-none border-2 border-gray-200 rounded-md w-max py-2 px-2 text-gray-500 leading-tight focus:outline-none focus:bg-white focus:shadow-outline" 
 							id="inline-full-name" type="text" 
 							value={coverimg} placeholder="Enter the Cover image URL" 
 							onChange={(e)=>{setcoverimg(e.target.value)}}
@@ -114,7 +160,7 @@ export default function AddContent(){
 				</div>
 
 				{/* <Tags tag={tag} addtag={addtag}/> */}
-				<div className=" w-max p-3 ps-0">
+				<div className=" w-100 p-3 ps-0">
 					<div className="block text-gray-800 text-xl font-bold mb-2">Meta Tags </div>
       				<input type="text"
       				className="font-bold mb-3 py-2 px-3 shadow appearance-none border rounded leading-tight focus:outline-none focus:shadow-outline me-3"
@@ -128,8 +174,10 @@ export default function AddContent(){
 					>
       				  Add
       				</button>
-      				<div className="flex">{tag.map((elem,index)=>{
-      				    return <div key={index} className="me-2 w-max p-2 border shadow">{elem}</div>
+      				<div className="flex flex-wrap flex-row justify-start">
+					{
+					tag.map((elem,index)=>{
+      				    return <div key={index} className="me-2  p-2 border shadow">{elem}</div>
       				})}</div>
     			</div>
 
@@ -154,19 +202,38 @@ export default function AddContent(){
   					  Reset
   					</button>
   					<button type="button" onClick={Preview}
-						className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" 
+						className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200  hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" 
 					>
   					  <svg aria-hidden="true" className="w-4 h-4 mr-2 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clipRule="evenodd"></path></svg>
   					  Preview Blog
   					</button>
+  					<button type="button" onClick={Export}
+						className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" 
+					>
+  					  <svg aria-hidden="true" className="w-4 h-4 mr-2 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clipRule="evenodd"></path></svg>
+  					  Export Json
+  					</button>
+
 				</div>
+				<hr/>
+				<hr className="mb-4"/>
 				{
 					previewasked && 
-					<div>
+					<>
 						<Card1 title={title} description={shortsummary} image={coverimg} metatags={tag} category={selected} content={content}/>
+				<hr/>
+				<hr className="mb-4"/>
+				<div className="">
+					<div className="relative w-7/12 sm:w-11/12 md:w-9/12 mx-auto">
+						<div className="text-md absolute right-5 top-5 bg-gray-200 px-3 py-1 rounded-full font-medium text-gray-800" >{selected.name}</div>
+						<img src={coverimg} alt="blog psotfs" className="w-full h-auto mx-auto  mb-2"/>
 					</div>
+					<div className="font-bold  w-9/12 px-6 capitalize leading-relaxed text-5xl md:text-3xl sm:text-xl sm:w-11/12 md:w-9/12   ">{title}</div>
+					<div id="content" className="px-6 w-11/12 my-3 mx-auto"></div>
+				</div>
+					</>
 				}
             </div>
          </>
  	);
- };
+};
