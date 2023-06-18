@@ -1,31 +1,9 @@
 import { Link } from "react-router-dom"
 import { Helmet } from 'react-helmet';
+import { products } from "../../data";
 
-const products = [
-    {
-      name: 'Product Listing',
-      href: './productListing',
-      imageSrc: 'https://github.com/Piyusharora2003/Leetcode150/assets/74443858/46839178-02b7-4e4b-b44e-6c2d29a03643',
-      imageAlt: "Product Listing page template ",
-      feature:"Listing, SearchBar, Cards, Categories, Advanced searching algorithum, Seo optimised"
-    },
-    {
-        name:"Blog Page",
-        href:'blogpage',
-        imageSrc:'https://github.com/MonalikaPatnaik/UMatter/assets/74443858/dad3f79d-e7a5-4807-9cc0-f3804eda0b6f',
-        imageAlt: "Blog page complete template ",
-        feature: "Title, meta-tilte, category, content ( collection of description images title), image all you need for the blogs "
-    },
-    {
-        name:"Content Creation Page",
-        href:'Add',
-        imageSrc:'https://github.com/MonalikaPatnaik/UMatter/assets/74443858/dad3f79d-e7a5-4807-9cc0-f3804eda0b6f',
-        imageAlt: "Create Page html using this template",
-        feature: "Title, meta-tilte, category, content ( collection of description images title), image all you need for the blogs "
-    }
-]
 
-  export default function Home() {
+export default function Home() {
     return (
       <div className="bg-white">
                 <Helmet>
