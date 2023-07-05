@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import { data } from '../../data.js';
 import { Helmet } from 'react-helmet';
 
-function PageTemp1(props) {
-    const data = props.data;
-    const [query,setquery] = useState("");
-    const [filtereddata,setfiltered] = useState(props.data.content);
 
-    // change to be made # search algo deque push_front when name matches , push_back when meta matches.
+function PageTemp1() {
+    const [query,setquery] = useState("");
+    const [filtereddata,setfiltered] = useState(data.content);
+
     function handlesearch(e){
         e.preventDefault();
         setquery(e.target.value);
@@ -64,6 +64,7 @@ function PageTemp1(props) {
                     <div className="w-full md:w-1/2">
                         <div className="block">
                             <img
+                                loading="lazy"
                                 src={data.coverimage}
                                 className="object-cover rounded-lg max-h-64 sm:max-h-96 btn- w-full h-full"
                                 alt={data.coverimagealt}    

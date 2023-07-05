@@ -113,7 +113,7 @@ export const products = [
     {
         name:"Blog Page",
         href:'blogpage',
-        imageSrc:'https://github.com/MonalikaPatnaik/UMatter/assets/74443858/dad3f79d-e7a5-4807-9cc0-f3804eda0b6f',
+        imageSrc:'https://github.com/MonalikaPatnaik/UMatter/assets/74443858/52ee39ba-1bf5-4056-bbbe-9e7057e2161c',
         imageAlt: "Blog page complete template ",
         feature: "Title, meta-tilte, category, content ( collection of description images title), image all you need for the blogs "
     },
@@ -125,3 +125,31 @@ export const products = [
         feature: "Export Data , json format, writing blog post"
     }
 ]
+
+export const BlogPageContent = {
+        tags:
+            ["Open source contribution"],
+        title:
+            "Embracing the Power of Open Source Contribution",
+        metatitle:
+            "Community, Collaboration, Code: The Essence of Open Source Contribution",
+        image:"https://images.pexels.com/photos/270404/pexels-photo-270404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        content:[{
+            title:"Introduction",
+            description:"Open source software has revolutionized the technology landscape, empowering developers worldwide to collaborate, innovate, and build amazing projects. At the heart of this movement lies the ethos of open source contribution. By sharing knowledge, code, and ideas freely, individuals and communities have the power to shape the future of technology. In this blog, we will explore the importance of open source contribution and the transformative impact it can have on both individuals and the industry as a whole.",
+        },{
+            title:"Fostering Innovation",
+            description:"Open source contribution fuels innovation by providing a platform for developers to collaborate, exchange ideas, and collectively build upon existing projects. By contributing to open source, developers have the opportunity to experiment, learn, and create solutions to real-world problems. The collaborative nature of open source encourages diversity of thought, resulting in the development of robust, efficient, and cutting-edge software.",
+        },{
+            title:"Learning and Skill Development",
+            description:" Participating in open source projects offers a unique learning experience. It provides aspiring developers with the chance to work on real-world codebases, understand best practices, and gain hands-on experience with different programming languages and frameworks. By contributing to open source, developers can enhance their skills, receive valuable feedback from experienced professionals, and develop a portfolio of work that showcases their abilities to potential employers.",
+            image:"https://www.achieveriasclasses.com/wp-content/uploads/2021/05/skill.jpeg"
+        },{
+          title:"Building a Supportive Community",
+          description:"Open source communities are inclusive and welcoming environments where developers of all skill levels can connect, collaborate, and support each other. Contributing to open source projects allows individuals to become part of a global network of like-minded individuals who share a passion for technology. The sense of belonging and camaraderie within these communities can be invaluable, providing mentorship opportunities, career guidance, and friendships that can last a lifetime.",
+        },{
+          title:"Conclusion",
+          image:"https://d2908q01vomqb2.cloudfront.net/ca3512f4dfa95a03169c5a670a4c91a19b3077b4/2017/11/22/opensource-ccc-1024x368.jpg",
+          description:"Open source contribution is not just about writing code; it is about making a meaningful impact on the technology industry and society as a whole. By actively participating in open source projects, developers can foster innovation, learn and grow professionally, build a supportive community, drive software quality, and promote ethical technology. The power of open source lies in its ability to empower individuals and communities to collaborate, share knowledge, and create a brighter technological future. So, let us embrace the spirit of open source and contribute to the collective journey of building a better tomorrow. "
+        }]
+}

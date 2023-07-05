@@ -17,6 +17,7 @@ export default function Home() {
               <div key={product.id} className="group relative">
                 <div className=" w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 ">
                   <img
+                    loading="lazy"
                     src={product.imageSrc}
                     alt={product.imageAlt}
                     className="h-full w-full object-cover  lg:h-full lg:w-full"
