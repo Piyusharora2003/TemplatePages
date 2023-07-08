@@ -12,7 +12,6 @@ function PageTemp1() {
         setquery(e.target.value);
         const array = data.content.filter((elem)=>{
             return elem.title.toLowerCase().includes(e.target.value.toLowerCase());
-            // || elem.SearchTags.toLowerCase().includes(e.target.value.toLowerCase()) 
         })
         for (let index = 0; index < data.content.length; index++) {
             const element = data.content[index];

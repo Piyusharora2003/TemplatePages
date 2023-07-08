@@ -104,7 +104,7 @@ export const data = {
 
 export const products = [
     {
-      name: 'Product Listing',
+      name: 'Product Listing Page',
       href: './productListing',
       imageSrc: 'https://github.com/Piyusharora2003/Leetcode150/assets/74443858/46839178-02b7-4e4b-b44e-6c2d29a03643',
       imageAlt: "Product Listing page template ",
@@ -119,10 +119,17 @@ export const products = [
     },
     {
         name:"Content Creation Page",
-        href:'Add',
-        imageSrc:'https://github.com/Piyusharora2003/blog/assets/74443858/f808971c-4985-43f8-9ec3-ccbdc4c2e407',
+        href:'AddContent',
+        imageSrc:'https://github.com/MonalikaPatnaik/UMatter/assets/74443858/6f472b76-f7ba-4711-b650-0787de63f7b0',
         imageAlt: "Create Page html using this template",
         feature: "Export Data , json format, writing blog post"
+    },
+    {
+        name:"Error Page",
+        href:'/errorPageRandomLink',
+        imageSrc:'https://github-production-user-asset-6210df.s3.amazonaws.com/74443858/251937484-4bfec3c4-bcd8-4163-8f1f-213a39d3abe9.png',
+        imageAlt: "This is a preview of the error page , animated, 404 by default",
+        feature: "Usually a 404 page not found page but can be transformed by providing user defined message, error code"
     }
 ]
 

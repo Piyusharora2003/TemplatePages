@@ -1,10 +1,14 @@
 import React from 'react';
 import styles from "./style.module.css";
 import { BlogPageContent } from '../../data';
+import { Helmet } from 'react-helmet';
 
 function Blogpage() {
   return (
     <div className="mx-auto max-w-xl px-3 pb-5 pt-3 sm:px-5 sm:pt-4 lg:max-w-6xl lg:px-7  ">
+      <Helmet>
+        <title>{BlogPageContent.title}</title>
+      </Helmet>
     {/* Tags  */}
       <div className='flex flex-row mb-2'>
         {
@@ -26,7 +30,7 @@ function Blogpage() {
         </div>
 
         {/* Cover image */}
-        <img src={BlogPageContent.image} className='object-cover rounded-lg sm:max-h-96 sm:w-full md:w-9/12 m-6 ms-1 h-full'/>
+        <img src={BlogPageContent.image} alt='cover' className='object-cover rounded-lg sm:max-h-96 sm:w-full md:w-9/12 m-6 ms-1 h-full'/>
 
         {/* Content --> combination of text , images(optional), title */}
         {
@@ -40,6 +44,7 @@ function Blogpage() {
                               <img src={block.image}
                                 loading="lazy"
                                 className='py-3 w-96 aspect-video'
+                                alt='cover'
                                />
                           }
                       

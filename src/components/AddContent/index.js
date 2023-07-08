@@ -3,6 +3,7 @@ import {Link} from "react-router-dom";
 import React, {useState} from 'react';
 import JoditEditor from "jodit-react";
 import Card1 from "../CardGallery/Card1.js";
+import { Helmet } from "react-helmet";
 
 const categories = [
 	{ 
@@ -84,11 +85,9 @@ export default function AddContent(){
 	  
 		document.body.removeChild(element);
 	  }
-	  
 	//   download("hello.txt","This is the content of my file :)");
-	  
 
-	function Export(){
+	function ExportTextFile(){
 		if(checkDataCompletion()){
 			const dive = document.getElementById("content");
             const tobeuploadedstate = {
@@ -114,7 +113,10 @@ export default function AddContent(){
 	}
 
  	return (
-         <>
+        <>
+	    	<Helmet>
+        		<title>Add Content Page</title>
+      		</Helmet>
   			<Link className="absolute top-2  right-4" to={'/'}>
 				<svg  xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.50} stroke="currentColor" className="w-6 h-6 font-bold">
   					<path strokeLinecap="round" strokeLinejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
@@ -214,7 +216,9 @@ export default function AddContent(){
   					  <svg aria-hidden="true" className="w-4 h-4 mr-2 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clipRule="evenodd"></path></svg>
   					  Preview Blog
   					</button>
-  					<button type="button" onClick={Export}
+  					<button
+						type="button"
+						onClick={ExportTextFile}
 						className="inline-flex items-center px-4 py-2 text-sm font-medium text-gray-900 bg-white border border-gray-200 rounded-r-md hover:bg-gray-100 hover:text-blue-700 focus:z-10  focus:text-blue-700 dark:bg-gray-700 dark:border-gray-600 dark:text-white dark:hover:text-white dark:hover:bg-gray-600 dark:focus:ring-blue-500 dark:focus:text-white" 
 					>
   					  <svg aria-hidden="true" className="w-4 h-4 mr-2 fill-current" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fillRule="evenodd" d="M2 9.5A3.5 3.5 0 005.5 13H9v2.586l-1.293-1.293a1 1 0 00-1.414 1.414l3 3a1 1 0 001.414 0l3-3a1 1 0 00-1.414-1.414L11 15.586V13h2.5a4.5 4.5 0 10-.616-8.958 4.002 4.002 0 10-7.753 1.977A3.5 3.5 0 002 9.5zm9 3.5H9V8a1 1 0 012 0v5z" clipRule="evenodd"></path></svg>
